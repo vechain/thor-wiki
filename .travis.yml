@@ -1,0 +1,12 @@
+script:
+- |
+  git config user.name "Travis CI"
+  git config user.email "builds@travis-ci.org"
+  git remote remove origin
+  git remote add origin https://$GITHUB_API_KEY@github.com/vechain/thor-wiki.git > /dev/null 2>&1 
+  git remote add wiki https://$GITHUB_API_KEY@github.com/vechain/thor.wiki.git > /dev/null 2>&1 
+  git fetch origin
+  git fetch wiki
+  git merge wiki/master --no-edit
+  git push origin HEAD:master > /dev/null 2>&1
+  git push wiki HEAD:master > /dev/null 2>&1
