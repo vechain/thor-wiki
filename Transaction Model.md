@@ -50,7 +50,8 @@ Every VeChainThor transaction includes novel fields DependsOn, BlockRef and Expi
 - BlockRef stores the reference to a particular block whose next block is the earliest block the current transaction can be packed. The reference (an eight-byte array) includes two parts: the first four bytes contains the block height (number) and the second four bytes a part of the referred block’s ID. In practice, the second part of BlockRef does not have to be assigned value if the block is not available (e.g. a block in the future).
 
 - Expiration stores the number of blocks that can be used to specify when the transaction expires. Specifically, Expiration plus BlockRef[:4] (this refers to the integer value of the first four bytes of BlockRef) defines the height of the latest block that the transaction can be packed into.
-- >``` 
+>
+``` 
 Block Number ∈[blockRef.number , BlockRef.number + expiration] 
 ```
 
