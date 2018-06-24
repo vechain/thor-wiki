@@ -12,7 +12,7 @@
 
 |Function|Description|Parameter|
 |---|---|----|
-|master|By default, the contract deployer is the contract master. The contract master's address will be returned as a result of calling this function.|self: The address to operate.|
+|master|By default, the contract deployer is the contract initial master. The contract master's address will be returned as a result of calling this function.|self: The address to operate.|
 |setMaster|Set the new contract master (Only the current contract master has privilege to do this operation.)|self: The address to operate.<br>newMaster: New contract master's address.|
 |balance|Return the specified block's VTHO balance.|self: The address to operate.<br>blockNumber: Block number (The range of block number varies from 65535 ahead of latest block number to latest block number.)|
 |energy|Return the specified block's VTHO balance.|self: The address to operate.<br>blockNumber: Block number (The range of block number varies from 65535 ahead of latest block number to latest block number.)|
