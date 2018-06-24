@@ -15,7 +15,7 @@
 |---|---|----|
 |master|默认合约部署者为合约控制者，调用此方法将会返回合约控制者地址|self: 要操作对象的地址|
 |setMaster|设置新的合约控制者（仅限当前合约控制者可执行此操作）|self: 要操作对象的地址<br>newMaster: 新合约控制者地址|
-|balance|返回指定区块VET 及 VTHO 余额 |self: 要操作对象的地址<br>blockNumber: 区块编号（区块编号区间仅限在最新块前65535个块至最新块）|
+|balance|返回指定区块VET余额 |self: 要操作对象的地址<br>blockNumber: 区块编号（区块编号区间仅限在最新块前65535个块至最新块）|
 |energy|返回指定区块的VTHO余额 |self: 要操作对象的地址<br>blockNumber: 区块编号（区块编号区间仅限在最新块前65535个块至最新块）|
 |hasCode|返回消息发送者是否为合约 |self: 要操作对象的地址|
 |storageFor|账号模型中的存储|self: 要操作对象的地址<br>key: [参考](https://solidity.readthedocs.io/en/latest/miscellaneous.html#layout-of-state-variables-in-storage)|
