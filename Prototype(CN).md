@@ -27,5 +27,5 @@
 |removeUser|将一名合约用户从合约用户中移除。（仅限合约控制者及合约本身可调用此方法）|self: 要操作对象的地址<br>user: 用户地址|
 |sponsor|合约的赞助（具体操作取决于参数） |self: 要操作对象的地址<br>yesOrNo(bool): <br>true: 成为合约赞助者合集中的赞助者 <br>false: 从合约赞助者合集中移除|
 |isSponsor|查询指定地址是否为赞助者 |self: 要操作对象的地址<br>sponsor：欲查询用户地址|
-|selectSponsor|从赞助者合集中选择一名成为合约赞助者|self: 要操作对象的地址<br>sponsor: 合集中赞助者地址|
+|selectSponsor|从赞助者合集中选择一名成为合约赞助者。（仅限合约控制者及合约本身可调用此方法）|self: 要操作对象的地址<br>sponsor: 合集中赞助者地址|
 |currentSponsor|返回当前赞助者|self: 要操作对象的地址|
