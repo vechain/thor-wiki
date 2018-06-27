@@ -52,7 +52,10 @@ The interface includes 2 parts, besides the navigation area.
 ### Approach 3: Java Client SDK
 
 Please Refer To
-[WalletUtils.java](https://github.com/vechain/thor-client-sdk4j/blob/master/src/main/java/com/vechain/thorclient/utils/WalletUtils.java)<br>[Demo](https://github.com/vechain/thor-client-sdk4j/blob/master/src/test/java/com/vechain/thorclient/utils/WalletUtilsTest.java)
+API：
+[AccountClient](https://github.com/vechain/thor-client-sdk4j#accountclient)
+Console：
+[Create Wallet](https://github.com/vechain/thor-client-sdk4j#create-wallet)
 
 ## Transaction Building And Signature
 The definition of transaction models field can be referred to: https://github.com/vechain/thor/wiki/Transaction-Model
@@ -116,12 +119,7 @@ Deploy the contract into VeChainThor network.
 | dependsOn  | ID of the transaction on which the current transaction depends | if dependsOn is NOT `null`, then only the transaction was successfully on chain will be executed.|
 | blockRef | reference to a specific block | `best block number` as default value |
 
-###Approach 2: Java Client SDK
-1. API approach:
-For details, refer to [Transaction client](https://github.com/vechain/thor-client-sdk4j#transactionclient)
 
-2. console
-For details, refer to [Java console](https://github.com/vechain/thor-client-sdk4j#4-java-console-approach)
 
 ## Send transaction
 
@@ -131,7 +129,13 @@ Once a transaction has been built, with correct password of the sender inputted,
 
 ---
 ### Approach 2: Java Client SDK
-For details, refer to [TransactionClientTest.java](https://github.com/vechain/thor-client-sdk4j/blob/master/src/main/java/com/vechain/thorclient/clients/TransactionClient.java)
+1. API :
+For details, refer to 
+1.[Sign VET transaction](https://github.com/vechain/thor-client-sdk4j#sign-vet-transaction)
+2.[Sign VTHO transaction](https://github.com/vechain/thor-client-sdk4j#sign-vtho-transaction)
+
+2. console
+For details, refer to [Sign VET transaction](https://github.com/vechain/thor-client-sdk4j#sign-vet-transactions)
 
 ## MPP Related
 For details, refer to:
@@ -163,10 +167,10 @@ Assume that the current transaction fee is 21 THO (always subject to the actual 
 ```
 
 ## BlockChain Info Query
-###Approach 1: Sync
+### Approach 1: Sync
 Insights is able to visualize the VeChainThor data and display it in real time. User can query the blockchain information by the following contents.
 
-####Latest block/Block query/Block ID
+#### Latest block/Block query/Block ID
 By default, when accessing insights, insights automatically loads the latest block and query the info of it in real time. The specified block info can be queried by inputting block ID/number. 
 >If Branch label exists, that represents the block is not in the mainnet.
 
@@ -236,7 +240,9 @@ Query the corresponding according to the address.
 
 ### Approach 2: Java Client SDK
 API:
-For details, refer to [thorClient](https://github.com/vechain/thor-client-sdk4j/tree/master/src/main/java/com/vechain/thorclient/clients)
+For details, refer to
+1.[API](https://github.com/vechain/thor-client-sdk4j#query-transaction)
+2.[java console](https://github.com/vechain/thor-client-sdk4j#4-java-console-approach)
 
 ## Confirm Transaction
 #### 1. Get Block
@@ -248,29 +254,64 @@ Use java console command:
 java -jar thor-client-sdk4j-0.0.2.jar getBlock "http://localhost:8669"
 
 or
+
 2.java api:
-Block block = BlockClient.getBlock(Revision.BEST);  //get the best (latest) block
-    or Block block = BlockClient.getBlock(148847);  //get the specified block
+// get best block
+Block block = BlockClient.getBlock(Revision.BEST);   
+System.out.println(JSON.toJSONString(block));    
+
+or
+
+// get specified block
+Revision revision = Revision.create(148847);
+Block block = BlockClient.getBlock(revision);
 System.out.println(JSON.toJSONString(block));
+
 ```
+- best block
+
 ```
-{ number: 148847,
-  id: '0x0002456fe81e6df0548a327faa3c1764eff7c3b7ce5cf1d1d27264818e78ea8c',
-  size: 467,
-  parentID: '0x0002456e56ae5827d90b760cf531fc98791621f548ee08dcedc6e5cbb97d5b3c',
-  timestamp: 1529917460,
-  gasLimit: 10448965,
-  beneficiary: '0x97a79df349e06b472fba84aba852659f1bdbd90b',
-  gasUsed: 51462,
-  totalScore: 946359,
-  txsRoot: '0xb914c99935d881b113a116c9a603ff670e27cc74703bade677735e13b7b53970',
-  stateRoot: '0x3b391f04e9e9c61543b902e2fd6b1d7a617be2c3cf3ff90f43be05ff637a96b3',
-  receiptsRoot: '0x262e43962d139e3dd6904c451c39dc5d14384343d41f60d70168f920bc7858c4',
-  signer: '0x97a79df349e06b472fba84aba852659f1bdbd90b',
-  isTrunk: true,
-  transactions:
-   [ '0x255576013fd61fa52f69d5d89af8751731d5e9e17215b0dd6c33af51bfe28710' ] }
+{
+  "beneficiary": "0xafbd76f9cdd19015c2d322a35bbea0480f5d70e1",
+  "gasLimit": 10448965,
+  "gasUsed": 0,
+  "id": "0x00026bfa7cbbd7c8cf643e45eadff1ddce1395cc47a5c08c521498f693381840",
+  "isTrunk": true,
+  "number": "158714",
+  "parentID": "0x00026bf9c0828062b25d0b23df0c99f6571af389d273961b82c90906a0a96b1b",
+  "receiptsRoot": "0x45b0cfc220ceec5b7c1c62c4d4193d38e4eba48e8815729ce75f9c0ab0e4c1c0",
+  "signer": "0xafbd76f9cdd19015c2d322a35bbea0480f5d70e1",
+  "size": 239,
+  "stateRoot": "0xa8dd31b95e227b92e800d65c824d2fb124a36e924b398252ec995d3611a69d43",
+  "timestamp": 1530016140,
+  "totalScore": 1034108,
+  "transactions": [],
+  "txsRoot": "0x45b0cfc220ceec5b7c1c62c4d4193d38e4eba48e8815729ce75f9c0ab0e4c1c0"
+}
 ```
+
+- specified block
+
+```
+{
+  "beneficiary": "0x0000000000000000000000000000000000000000",
+  "gasLimit": 10000000,
+  "gasUsed": 0,
+  "id": "0x00000000ef3b214ad627b051f42add3b93b2f913f2594b94a64b2377b0f9159a",
+  "isTrunk": true,
+  "number": "0",
+  "parentID": "0xffffffff00000000000000000000000000000000000000000000000000000000",
+  "receiptsRoot": "0x45b0cfc220ceec5b7c1c62c4d4193d38e4eba48e8815729ce75f9c0ab0e4c1c0",
+  "signer": "0x0000000000000000000000000000000000000000",
+  "size": 170,
+  "stateRoot": "0x120df3368f409525ed30fd98c999af8d66bfa553cae14005fc3b7f00bcc60de1",
+  "timestamp": 1528387200,
+  "totalScore": 0,
+  "transactions": [],
+  "txsRoot": "0x45b0cfc220ceec5b7c1c62c4d4193d38e4eba48e8815729ce75f9c0ab0e4c1c0"
+}
+```
+
 >The transaction field is the txID of all the transactions inside of this block.
 
 #### 2. Get the Transaction
@@ -329,12 +370,13 @@ The transaction detailed content from the returned transaction information can b
 1.java console:
 java -jar thor-client-sdk4j-0.0.2.jar getTransactionReceipt "0x255576013fd61fa52f69d5d89af8751731d5e9e17215b0dd6c33af51bfe28710"  "http://localhost:8669"
 
-或
+
 
 2.java api
 Receipt receipt = TransactionClient.getTransactionReceipt("0x255576013fd61fa52f69d5d89af8751731d5e9e17215b0dd6c33af51bfe28710", null);
 System.out.println("receipt"+JSON.toJSONString(receipt));
 ```
+
 Return transaction receipt info: a transaction includes 2 clauses, one of which is VET transfer while another of which is VTHO transfer.
 
 ```
@@ -414,7 +456,7 @@ VeChainThor blockchain transaction consumes gas, gas is converted into VTHO base
 The calculation equation is:
 `VTHO = (1 + gasPriceCoef/255) * baseGasPrice`
 
-Current mainnet set baseGasPrice to be: 1 VTHO = 1000gas (always subject to the actual network parameter). The VET transfer fee is 21000gas. If gasPriceCoef = 0, `the used VTHO = (1 + 0/255) * 21000/1000 = 21 VTHO`
+Current mainnet set baseGasPrice to be: 1 VTHO = 1000gas (always subject to the actual network parameter). The VET transfer fee is 21000gas. If gasPriceCoef = 0, the used `VTHO = (1 + 0/255) * 21000/1000 = 21 VTHO`
 
 - The priority of a transaction in transaction pool can be raised by adjusting gasPriceCoef. For example, if gasPriceCoef =128, `used VTHO = (1 + 128/255) * 21000/1000 = 31.5 VTHO`
 
