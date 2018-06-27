@@ -1,5 +1,3 @@
-# Exchange
-
 **Since this documentation is associated with sensitive information, such as account, the approaches mentioned by this documentation is only for reference.**
 
 ## ToolKit
@@ -53,7 +51,7 @@ The interface includes 2 parts, besides the navigation area.
 
 Please Refer To
 API：
-[AccountClient](https://github.com/vechain/thor-client-sdk4j#accountclient)
+[AccountClient](https://github.com/vechain/thor-client-sdk4j#accountclient)<br>
 Console：
 [Create Wallet](https://github.com/vechain/thor-client-sdk4j#create-wallet)
 
@@ -129,16 +127,16 @@ Once a transaction has been built, with correct password of the sender inputted,
 
 ---
 ### Approach 2: Java Client SDK
-1. API :
-For details, refer to 
-1.[Sign VET transaction](https://github.com/vechain/thor-client-sdk4j#sign-vet-transaction)
+1. API :<br>
+For details, refer to <br>
+1.[Sign VET transaction](https://github.com/vechain/thor-client-sdk4j#sign-vet-transaction)<br>
 2.[Sign VTHO transaction](https://github.com/vechain/thor-client-sdk4j#sign-vtho-transaction)
 
-2. console
+2. console:<br>
 For details, please refer to [Sign VET transaction](https://github.com/vechain/thor-client-sdk4j#sign-vet-transactions)
 
 ## MPP Related
-For details, refer to:
+For details, refer to:<br>
 1.[Prototype](https://github.com/vechain/thor/wiki/Prototype(EN))<br>
 2.[Prototype Client](https://github.com/vechain/thor-client-sdk4j#prototypeclient)
 
