@@ -239,8 +239,7 @@ Query the corresponding according to the address.
 
 
 ### Approach 2: Java Client SDK
-API:
-For details, refer to
+For details, refer to<br>
 1.[API](https://github.com/vechain/thor-client-sdk4j#query-transaction)
 2.[java console](https://github.com/vechain/thor-client-sdk4j#4-java-console-approach)
 
