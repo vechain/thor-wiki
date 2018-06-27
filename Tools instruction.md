@@ -135,11 +135,11 @@ For details, refer to
 2.[Sign VTHO transaction](https://github.com/vechain/thor-client-sdk4j#sign-vtho-transaction)
 
 2. console
-For details, refer to [Sign VET transaction](https://github.com/vechain/thor-client-sdk4j#sign-vet-transactions)
+For details, please refer to [Sign VET transaction](https://github.com/vechain/thor-client-sdk4j#sign-vet-transactions)
 
 ## MPP Related
 For details, refer to:
-1.[Prototype](https://github.com/vechain/thor/wiki/Prototype(EN))
+1.[Prototype](https://github.com/vechain/thor/wiki/Prototype(EN))<br>
 2.[Prototype Client](https://github.com/vechain/thor-client-sdk4j#prototypeclient)
 
 ### UserPlan setup
@@ -225,7 +225,6 @@ Because the Insights queries the info on chain, all the transactions have receip
 | tx Reward (VTHO) | transaction reward for proposer |
 | outputs | Event Logs |
 
->
 
 #### Address Query
 Query the corresponding according to the address.
