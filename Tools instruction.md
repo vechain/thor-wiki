@@ -242,16 +242,13 @@ For details, refer to<br>
 
 ## Confirm Transaction
 #### 1. Get Block
-
 Use java console command:
 
 ```
-1.java console:
+1.console:
 java -jar thor-client-sdk4j-0.0.2.jar getBlock "http://localhost:8669"
 
-or
-
-2.java api:
+2. API:
 // get best block
 Block block = BlockClient.getBlock(Revision.BEST);   
 System.out.println(JSON.toJSONString(block));    
