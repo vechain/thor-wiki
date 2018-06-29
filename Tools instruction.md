@@ -157,7 +157,7 @@ logger.info( "set credit plans:" + JSON.toJSONString( result ) );
 ```
 
 
-Assume that the current transaction fee is 21 THO (always subject to the actual network parameter). When setting the UserPlan, you wish to limit the action to one user per day and gradually restore it. Then you can set userPlan's credit and recoveryRate as below:
+Assume that the current transaction fee is 21 THO (always subject to the actual network parameter). When setting the credit Plan, you wish to limit the action to one user per day and gradually restore it. Then you can set credit plan's credit and recoveryRate as below:
 
 ```
 1.credit ： credit.setDecimalAmount( "21.00" )
@@ -324,34 +324,34 @@ Return the transaction info:
 
 ```
 {
-    "id": "0x255576013fd61fa52f69d5d89af8751731d5e9e17215b0dd6c33af51bfe28710",
-    "size": 224,
-    "chainTag": "0x9a",
-    "blockRef": "0x0002456e56ae5827",
-    "expiration": 720,
-    "clauses": [
-        {
-            "to": "0xB2ef3293Bb6c886d9e57ba205c46450B6d48A0A1",
-            "value": "1234560000000000000",
-            "data": "0x"
-        },
-        {
-            "to": "0x0000000000000000000000000000456E65726779",
-            "value": "0",
-            "data": "0xa9059cbb000000000000000000000000b2ef3293bb6c886d9e57ba205c46450b6d48a0a100000000000000000000000000000000000000000000000000000000000003ff"
-        }
+id: '0x255576013fd61fa52f69d5d89af8751731d5e9e17215b0dd6c33af51bfe28710',
+  chainTag: '0x9a',
+  blockRef: '0x0002456e56ae5827',
+  expiration: 720,
+  clauses: 
+    [
+      {
+      "to": "0xB2ef3293Bb6c886d9e57ba205c46450B6d48A0A1",
+      "value": "1234560000000000000",
+      "data": "0x"
+      },
+      {
+      "to": "0x0000000000000000000000000000456E65726779",
+      "value": "0",
+      "data": "0xa9059cbb000000000000000000000000b2ef3293bb6c886d9e57ba205c46450b6d48a0a100000000000000000000000000000000000000000000000000000000000003ff"
+       } 
     ],
-    "gasPriceCoef": 0,
-    "gas": 100000,
-    "dependsOn": null,
-    "nonce": "0x164362fbdd0",
-    "origin": "0x267Dc1dF3e82E6BdAD45156C7c31Aad36DF2B5Fa",
-    "block": {
-        "id": "0x0002456fe81e6df0548a327faa3c1764eff7c3b7ce5cf1d1d27264818e78ea8c",
-        "number": 148847,
-        "timestamp": 1529917460
-    },
-    "blockNumber": 148847
+  gasPriceCoef: 0,
+  gas: 100000,
+  origin: '0x267Dc1dF3e82E6BdAD45156C7c31Aad36DF2B5Fa',
+  nonce: '0x164362fbdd0',
+  dependsOn: null,
+  size: 224,
+  meta: 
+   { blockID: '0x0002456fe81e6df0548a327faa3c1764eff7c3b7ce5cf1d1d27264818e78ea8c',
+     blockNumber: 148847,
+     blockTimestamp: 1529917460 },
+  blockNumber: 23426 }
 }
 ```
 
@@ -374,21 +374,19 @@ Return transaction receipt info: a transaction includes 2 clauses, one of which 
 
 ```
 {
-    "gasUsed": 51462,
-    "gasPayer": "0x267Dc1dF3e82E6BdAD45156C7c31Aad36DF2B5Fa",
-    "paid": "0x2ca2dc057b7270000",
-    "reward": "0xd640ece71d588000",
-    "reverted": false,
-    "block": {
-        "id": "0x0002456fe81e6df0548a327faa3c1764eff7c3b7ce5cf1d1d27264818e78ea8c",
-        "number": 148847,
-        "timestamp": 1529917460
-    },
-    "tx": {
-        "id": "0x255576013fd61fa52f69d5d89af8751731d5e9e17215b0dd6c33af51bfe28710",
-        "origin": "0x267Dc1dF3e82E6BdAD45156C7c31Aad36DF2B5Fa"
-    },
-    "outputs": [
+  "gasUsed": 51462,
+  "gasPayer": "0x267Dc1dF3e82E6BdAD45156C7c31Aad36DF2B5Fa",
+  "paid": "0x2ca2dc057b7270000",
+  "reward": "0xd640ece71d588000",
+  "reverted": false,
+  "meta": {
+    "blockID": "0x0002456fe81e6df0548a327faa3c1764eff7c3b7ce5cf1d1d27264818e78ea8c",
+    "blockNumber": 148847,
+    "blockTimestamp": 1529917460,
+    "txID": "0x255576013fd61fa52f69d5d89af8751731d5e9e17215b0dd6c33af51bfe28710",
+    "txOrigin": "0x267Dc1dF3e82E6BdAD45156C7c31Aad36DF2B5Fa"
+  },
+ "outputs": [
         {
             "contractAddress": null,
             "events": [],
@@ -413,13 +411,9 @@ Return transaction receipt info: a transaction includes 2 clauses, one of which 
                     "data": "0x00000000000000000000000000000000000000000000000000000000000003ff"
                 }
             ],
-            "transfers": []
-        }
-    ],
-    "blockNumber": 148847,
-    "blockHash": "0x0002456fe81e6df0548a327faa3c1764eff7c3b7ce5cf1d1d27264818e78ea8c",
-    "transactionHash": "0x255576013fd61fa52f69d5d89af8751731d5e9e17215b0dd6c33af51bfe28710",
-    "status": "0x1"
+             "transfers": []
+    }
+  ]
 }
 ```
 
@@ -452,4 +446,8 @@ The calculation equation is:
 Current mainnet set baseGasPrice to be: 1 VTHO = 1000gas (always subject to the actual network parameter). The VET transfer fee is 21000gas. If gasPriceCoef = 0, the used `VTHO = (1 + 0/255) * 21000/1000 = 21 VTHO`
 
 - The priority of a transaction in transaction pool can be raised by adjusting gasPriceCoef. For example, if gasPriceCoef =128, `used VTHO = (1 + 128/255) * 21000/1000 = 31.5 VTHO`
+
+
+
+
 
