@@ -153,7 +153,7 @@ TransferResult result = ProtoTypeContractClient.setCreditPlans(
         new Amount[]{credit},
         new Amount[]{recovery},
         ContractClient.GasLimit, (byte)0x0, 720, ECKeyPair.create( "0xeb78d6405ba1a28ccd938a72195e0802dfbe1de463bc6e5dd491b2c7562b5e3f" ) );
-logger.info( "set user plans:" + JSON.toJSONString( result ) );
+logger.info( "set credit plans:" + JSON.toJSONString( result ) );
 ```
 
 
