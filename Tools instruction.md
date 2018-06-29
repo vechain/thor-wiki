@@ -140,7 +140,7 @@ For details, refer to:<br>
 1.[Prototype](https://github.com/vechain/thor/wiki/Prototype(EN))<br>
 2.[Prototype Client](https://github.com/vechain/thor-client-sdk4j#prototypeclient)
 
-### UserPlan setup
+### Credit Plan setup
 
 ```
 Amount credit = Amount.VTHO();
@@ -148,12 +148,12 @@ credit.setDecimalAmount( "12.00" );//maximum credits(VTHO) for users
 Amount recovery = Amount.VTHO();
 recovery.setDecimalAmount( "0.00001" );//credits(VTHO) recovery rate per second  
 
-TransferResult result = ProtoTypeContractClient.setUserPlans(
+TransferResult result = ProtoTypeContractClient.setCreditPlans(
         new Address[]{Address.fromHexString( "0xD3EF28DF6b553eD2fc47259E8134319cB1121A2A")},
         new Amount[]{credit},
         new Amount[]{recovery},
         ContractClient.GasLimit, (byte)0x0, 720, ECKeyPair.create( "0xeb78d6405ba1a28ccd938a72195e0802dfbe1de463bc6e5dd491b2c7562b5e3f" ) );
-logger.info( "set user plans:" + JSON.toJSONString( result ) );
+logger.info( "set credit plans:" + JSON.toJSONString( result ) );
 ```
 
 
