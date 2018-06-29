@@ -4,7 +4,7 @@ problems that hinder a broader use of blockchain at the moment. Specifically, a 
 Blockchain transaction includes the following fields:
 
 - `chainTag` : `uint8`, **last byte** of the genesis block ID.
-- `blockRef`  : `uint64` Default is **best block**, The BlockRef(an eight-byte array) includes two parts: the first four bytes contains the block height (number) and the rest four bytes a part of the referred block’s ID.if its future block should put blockNumber+"00000000".
+- `blockRef`  : `uint64` Default is **best block**, The BlockRef(an eight-byte array) includes two parts: the first four bytes contains the block height (number) and the rest four bytes a part of the referred block’s ID.
 - `expiration` : `uint32` Default is **0** . Number of blocks that can be used to specify when the transaction expires[1].Specifically, Expiration+BlockRef[:4] defines the height of the latest block that the transaction can be packed into.
 - `clauses` : `array` an array of “clause” objects each of which contains fields “To”, “Value” and
 “Data” to enable single “from” coupling with multiple “to”
