@@ -70,3 +70,12 @@ The multi-task mechanism has two main characteristics:
 - Since the tasks are contained in a single transaction, their executions can be considered as an atomic operation, meaning that, they either all succeed, or all fail. 
 - During the transactions execution, the included tasks are processed one by one in the order defined by the fields Clauses
 
+ ## Transaction fee calculation
+
+VeChainThor blockchain transaction consumes gas, gas is converted into VTHO based on gasPrice and account VTHO is deducted to calculate the transaction fee. 
+The calculation equation is:
+`VTHO = (1 + gasPriceCoef/255) * baseGasPrice`
+
+Current mainnet set baseGasPrice to be: 1 VTHO = 1000gas (always subject to the actual network parameter). The VET transfer fee is 21000gas. If gasPriceCoef = 0, the used `VTHO = (1 + 0/255) * 21000/1000 = 21 VTHO`
+
+- The priority of a transaction in transaction pool can be raised by adjusting gasPriceCoef. For example, if gasPriceCoef =128, `used VTHO = (1 + 128/255) * 21000/1000 = 31.5 VTHO`
