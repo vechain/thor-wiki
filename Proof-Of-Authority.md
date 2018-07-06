@@ -27,7 +27,7 @@ A<sub>B</sub> denotes the set of masternodes with the “active” status associ
 
 A<sup>a</sup> <sub>B(n,t)</sub> = A<sub>PA(B(n,t))</sub> ∪ a
 
-Where PA(∙) returns the parent block. Then compute index i<sup>a(n,t)</sup> as:
+Where PA(∙) returns the parent block. Then compute index i<sup>a</sup>(n,t) as:
 i<sup>a</sup>(n,t) = γ(n ,t) mod ||A<sup>a</sup> <sub>B(n,t)</sub>||
 
 MasterNode `a` is the legitimate producer of `B(n,t)` if and only if A<sup>a</sup><sub>B(n,t)</sub>[i<sup>a</sup>(n,t)]=a. Note that we put double quotes around the word “active” to emphasize that the status does not directly reflect whether a certain masternode is actually physically active in the network at that time, but merely a status derived from their validity to produce a block within the network.
@@ -37,8 +37,8 @@ MasterNode `a` is the legitimate producer of `B(n,t)` if and only if A<sup>a</su
 
 To discuss the status updates of masternodes let’s look at the situation illustrated in the above figure for an example. It shows four allowed time slots {t<sub>1</sub>,t<sub>2</sub>,t<sub>3</sub>,t<sub>4</sub>} for block production. The solid line marks the verified blocks produced on time while the dashed line is the missing blocks. For each time slot, the system can compute the index of the responsible masternode using the above equation. The system sets the status of any masternode that fails to produce a block as “inactive” and the status of the current block’s producer as “active”. In this example, after the system verifies B(n,t<sub>4</sub>), it updates the masternode status associated with B(n,t<sub>4</sub>) as:
 
-* A<sup>a<sup>*</sup></sup> <sub>B(n,t<sub>4</sub>)</sub>[i<sup>a<sup>*</sup></sup>(n,t<sub>2</sub>)]<- inactive
-* A<sup>a<sup>*</sup></sup> <sub>B(n,t<sub>4</sub>)</sub>[i<sup>a<sup>*</sup></sup>(n,t<sub>3</sub>)]<- inactive
+* A<sup>a<sup>*</sup></sup><sub>B(n,t<sub>4</sub>)</sub>[i<sup>a<sup>*</sup></sup>(n,t<sub>2</sub>)]<- inactive
+* A<sup>a<sup>*</sup></sup><sub>B(n,t<sub>4</sub>)</sub>[i<sup>a<sup>*</sup></sup>(n,t<sub>3</sub>)]<- inactive
 * a<sup>*</sup><- active
 
 
