@@ -56,7 +56,7 @@ The final question we need to answer is how to choose between two canonical bloc
 
 Since ||A<sub>B(n,t)</sub>||$ computers the number of masternodes that are active in associated with `B(n,t)`, This can be considered as the number of masternodes that witnessed `B(n,t)`. Therefore, the branch with the largest AWN is chosen as the trunk. If the AWNs are the same, the VeChainThor Blockchain selects the branch with less length (e.g., the greater average AWNs).
 
-Formally, given two branches `B` and `B’` with latest blocks `B(n,t)` and `B’(n’,t’)`, respectively, the protocol first calculates their AWNs π<sub>B(n,t) and π<sub>B<sup>'</sup>(n<sup>'</sup>,t<sup>'<sup>)</sub>. The system then makes the following decision: choose B as the trunk if π<sub>B(n,t)</sub> > π<sub>B<sup>'</sup>(n<sup>'</sup>,t<sup>'</sup>)</sub>; or choose `B’` if π<sub>B(n,t)</sub> < π<sub>B<sup>'</sup>(n<sup>'</sup>,t<sup>'</sup>)</sub>. In case π<sub>B(n,t)</sub> = π<sub>B<sup>'</sup>(n<sup>'</sup>,t<sup>'</sup>)</sub>, choose `B` if `n`<`n’` and `B’` if `n`>`n’`. If `n=n’`, keep the current trunk.
+Formally, given two branches `B` and `B’` with latest blocks `B(n,t)` and `B’(n’,t’)`, respectively, the protocol first calculates their AWNs π<sub>B(n,t)</sub> and π<sub>B<sup>'</sup>(n<sup>'</sup>,t<sup>'<sup>)</sub>. The system then makes the following decision: choose B as the trunk if π<sub>B(n,t)</sub> > π<sub>B<sup>'</sup>(n<sup>'</sup>,t<sup>'</sup>)</sub>; or choose `B’` if π<sub>B(n,t)</sub> < π<sub>B<sup>'</sup>(n<sup>'</sup>,t<sup>'</sup>)</sub>. In case π<sub>B(n,t)</sub> = π<sub>B<sup>'</sup>(n<sup>'</sup>,t<sup>'</sup>)</sub>, choose `B` if `n`<`n’` and `B’` if `n`>`n’`. If `n=n’`, keep the current trunk.
 
 
 
