@@ -35,14 +35,14 @@ MasterNode `a` is the legitimate producer of `B(n,t)` if and only if A<sup>a</su
 ![Image of DPRP](DPRP.png)
 
 
-To discuss the status updates of masternodes let’s look at the situation illustrated in the above figure for an example. It shows four allowed time slots {t1,t2,t3,t4} for block production. The solid line marks the verified blocks produced on time while the dashed line is the missing blocks. For each time slot, the system can compute the index of the responsible masternode using the above equation. The system sets the status of any masternode that fails to produce a block as “inactive” and the status of the current block’s producer as “active”. In this example, after the system verifies `B(n,t4)`, it updates the masternode status associated with B(n,t4) as:
+To discuss the status updates of masternodes let’s look at the situation illustrated in the above figure for an example. It shows four allowed time slots {t<sub>1</sub>,t<sub>2</sub>,t<sub>3</sub>,t<sub>4</sub>} for block production. The solid line marks the verified blocks produced on time while the dashed line is the missing blocks. For each time slot, the system can compute the index of the responsible masternode using the above equation. The system sets the status of any masternode that fails to produce a block as “inactive” and the status of the current block’s producer as “active”. In this example, after the system verifies B(n,t<sub>4</sub>), it updates the masternode status associated with B(n,t<sub>4</sub>) as:
 
 * A<sup>a<sup>*</sup></sup> <sub>B(n,t<sub>4</sub>)</sub>[i<sup>a<sup>*</sup></sup>(n,t<sub>2</sub>)]<- inactive
 * A<sup>a<sup>*</sup></sup> <sub>B(n,t<sub>4</sub>)</sub>[i<sup>a<sup>*</sup></sup>(n,t<sub>3</sub>)]<- inactive
 * a<sup>*</sup><- active
 
 
-Where a<sup>*</sup> is the signer of B(n,t<sub>4<sub>).
+Where a<sup>*</sup> is the signer of B(n,t<sub>4</sub>).
 
 From the above description, it can be seen that any missing block before a legitimate block timestamp t would completely change the order of the masternodes that produce blocks afterwards. It would hence be more difficult for attackers to find out which masternode is responsible for producing a number of consecutive blocks at a time relatively far away. Furthermore, the VeChain Foundation could deliberately let the masternodes control the ability to skip producing a block occasionally to increase the unpredictability.
 
