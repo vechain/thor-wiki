@@ -12,37 +12,37 @@ When designing the consensus protocol of any blockchain one must address three b
 
 ### When
 
-VeChainThor blocks are produced on a regular interval, `Δ`. In the initial release of the protocol, the `Δ` is set to ten seconds. Let's set $t_0$ to be the timestamp of the genesis block. The timestamp of the block with height `n>0`, $t_n$ must be complaint with the relation that $t_n = t_0 + m∙\Delta$ where `m∈N and m≥n`. 
+VeChainThor blocks are produced on a regular interval, `Δ`. In the initial release of the protocol, the `Δ` is set to ten seconds. Let's set t<sub>0</sub> to be the timestamp of the genesis block. The timestamp of the block with height `n>0`, t<sub>n</sub> must be complaint with the relation that t<sub>n</sub> = t<sub>0</sub> + m∙Δ where `m∈N and m≥n`. 
 
 
 ### Who
 
-The VeChainThor PoA Protocol ensures that every masternode has an equal opportunity to be selected to produce blocks. However, to satisfy security constraints, we do not want the order of masternodes to generate blocks to be entirely deterministic. To achieve this state, VeChainThor utilizes a deterministic pseudo-random process (DPRP) and the concept of “active/inactive” status for masternodes to decide if a masternode `a` is a legitimate option to produce a block `B(n,t)` with height `n` and timestamp `t`. In this method `t` must satisfy $(t-t_0) mod Δ = 0$. To answer who generates the block, we first define DPRP to generate a pseudo-random number `γ(n,t)` by:
+The VeChainThor PoA Protocol ensures that every masternode has an equal opportunity to be selected to produce blocks. However, to satisfy security constraints, we do not want the order of masternodes to generate blocks to be entirely deterministic. To achieve this state, VeChainThor utilizes a deterministic pseudo-random process (DPRP) and the concept of “active/inactive” status for masternodes to decide if a masternode `a` is a legitimate option to produce a block `B(n,t)` with height `n` and timestamp `t`. In this method `t` must satisfy (t-t<sub>0</sub>) mod Δ = 0. To answer who generates the block, we first define DPRP to generate a pseudo-random number `γ(n,t)` by:
 
-$\gamma(n ,t) = DPRP(n,t) Ξ hash(n∘t) $
+γ(n ,t) = DPRP(n,t) Ξ hash(n∘t)
 
 Where ∘ denotes the operation that concatenates two byte-arrays.
 
-$A_B$ denotes the set of masternodes with the “active” status associated with `B`. To verify whether `a` is the legitimate masternodes for producing `B(n,t)`, we first define:
+A<sub>B</sub> denotes the set of masternodes with the “active” status associated with `B`. To verify whether `a` is the legitimate masternodes for producing `B(n,t)`, we first define:
 
-$A^a _B(n,t) = A_ {PA(B(n,t))} \bigcup a$
+A<sup>a</sup> <sub>B(n,t)</sub> = A<sub>PA(B(n,t))</sub> ∪ a
 
-Where PA(∙) returns the parent block. Then compute index $i^a(n,t)$ as:
-$i^a(n,t) = \gamma(n ,t) mod ||A^a _B(n,t)||$ 
+Where PA(∙) returns the parent block. Then compute index i<sup>a(n,t)</sup> as:
+i<sup>a</sup>(n,t) = γ(n ,t) mod ||A<sup>a</sup> <sub>B(n,t)</sub>||
 
-MasterNode `a` is the legitimate producer of `B(n,t)` if and only if $A^a _{B(n,t)}[i^a(n,t)]=a$. Note that we put double quotes around the word “active” to emphasize that the status does not directly reflect whether a certain masternode is actually physically active in the network at that time, but merely a status derived from their validity to produce a block within the network.
+MasterNode `a` is the legitimate producer of `B(n,t)` if and only if A<sup>a</sup><sub>B(n,t)</sub>[i<sup>a</sup>(n,t)]=a. Note that we put double quotes around the word “active” to emphasize that the status does not directly reflect whether a certain masternode is actually physically active in the network at that time, but merely a status derived from their validity to produce a block within the network.
 
 ![Image of DPRP](DPRP.png)
 
 
 To discuss the status updates of masternodes let’s look at the situation illustrated in the above figure for an example. It shows four allowed time slots {t1,t2,t3,t4} for block production. The solid line marks the verified blocks produced on time while the dashed line is the missing blocks. For each time slot, the system can compute the index of the responsible masternode using the above equation. The system sets the status of any masternode that fails to produce a block as “inactive” and the status of the current block’s producer as “active”. In this example, after the system verifies `B(n,t4)`, it updates the masternode status associated with B(n,t4) as:
 
-* $A^{a^*} _{B(n,t_4)}[i^{a^*}(n,t_2)]\leftarrow inactive$
-* $A^{a^*} _{B(n,t_4)}[i^{a^*}(n,t_3)]\leftarrow inactive$
-* $a^*\leftarrow active$
+* A<sup>a<sup>*</sup></sup> <sub>B(n,t<sub>4</sub>)</sub>[i<sup>a<sup>*</sup></sup>(n,t<sub>2</sub>)]<- inactive
+* A<sup>a<sup>*</sup></sup> <sub>B(n,t<sub>4</sub>)</sub>[i<sup>a<sup>*</sup></sup>(n,t<sub>3</sub>)]<- inactive
+* a<sup>*</sup><- active
 
 
-Where $a^*$ is the signer of $B(n,t_4)$.
+Where a<sup>*</sup> is the signer of B(n,t<sub>4<sub>).
 
 From the above description, it can be seen that any missing block before a legitimate block timestamp t would completely change the order of the masternodes that produce blocks afterwards. It would hence be more difficult for attackers to find out which masternode is responsible for producing a number of consecutive blocks at a time relatively far away. Furthermore, the VeChain Foundation could deliberately let the masternodes control the ability to skip producing a block occasionally to increase the unpredictability.
 
@@ -52,11 +52,11 @@ From the above description, it can be seen that any missing block before a legit
 
 The final question we need to answer is how to choose between two canonical blockchain branches to make the “trunk”. Since there is no computational competition in PoA, the “longest chain” rule does not apply. Instead, the VeChainThor Blockchain chooses the branch that is witnessed by more masternodes as the better of the two. To do this, the protocol computes the accumulated witness number (AWN) for block `B(n,t)` as:
 
-$\pi_{B(n,t)}=\pi_{PA(B(n,t))}+||A_B(n,t||$
+π<sub>B(n,t)</sub> = π<sub>PA(B(n,t))</sub>+||A<sub>B(n,t)</sub>||
 
-Since $||A_B(n,t||$ computers the number of masternodes that are active in associated with `B(n,t)`, This can be considered as the number of masternodes that witnessed `B(n,t)`. Therefore, the branch with the largest AWN is chosen as the trunk. If the AWNs are the same, the VeChainThor Blockchain selects the branch with less length (e.g., the greater average AWNs).
+Since ||A<sub>B(n,t)</sub>||$ computers the number of masternodes that are active in associated with `B(n,t)`, This can be considered as the number of masternodes that witnessed `B(n,t)`. Therefore, the branch with the largest AWN is chosen as the trunk. If the AWNs are the same, the VeChainThor Blockchain selects the branch with less length (e.g., the greater average AWNs).
 
-Formally, given two branches `B` and `B’` with latest blocks `B(n,t)` and `B’(n’,t’)`, respectively, the protocol first calculates their AWNs $\pi_{B(n,t)}$ and $\pi_{B^{'}(n^{'},t^{'})}$. The system then makes the following decision: choose B as the trunk if $\pi_{B(n,t)}>\pi_{B^{'}(n^{'},t^{'})}$; or choose `B’` if $\pi_{B(n,t)}<\pi_{B^{'}(n^{'},t^{'})}$. In case $\pi_{B(n,t)}=\pi_{B^{'}(n^{'},t^{'})}$, choose `B` if `n`<`n’` and `B’` if `n`>`n’`. If `n=n’`, keep the current trunk.
+Formally, given two branches `B` and `B’` with latest blocks `B(n,t)` and `B’(n’,t’)`, respectively, the protocol first calculates their AWNs π<sub>B(n,t) and π<sub>B<sup>'</sup>(n<sup>'</sup>,t<sup>'<sup>)</sub>. The system then makes the following decision: choose B as the trunk if π<sub>B(n,t)</sub> > π<sub>B<sup>'</sup>(n<sup>'</sup>,t<sup>'</sup>)</sub>; or choose `B’` if π<sub>B(n,t)</sub> < π<sub>B<sup>'</sup>(n<sup>'</sup>,t<sup>'</sup>)</sub>. In case π<sub>B(n,t)</sub> = π<sub>B<sup>'</sup>(n<sup>'</sup>,t<sup>'</sup>)</sub>, choose `B` if `n`<`n’` and `B’` if `n`>`n’`. If `n=n’`, keep the current trunk.
 
 
 
