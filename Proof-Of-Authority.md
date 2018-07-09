@@ -32,7 +32,7 @@ i<sup>a</sup>(n,t) = γ(n ,t) mod ||A<sup>a</sup> <sub>B(n,t)</sub>||
 
 MasterNode `a` is the legitimate producer of `B(n,t)` if and only if A<sup>a</sup><sub>B(n,t)</sub>[i<sup>a</sup>(n,t)]=a. Note that we put double quotes around the word “active” to emphasize that the status does not directly reflect whether a certain masternode is actually physically active in the network at that time, but merely a status derived from their validity to produce a block within the network.
 
-![Image of DPRP](DPRP.png)
+![Image of DPRP](./Images/DPRP.png)
 
 
 To discuss the status updates of masternodes let’s look at the situation illustrated in the above figure for an example. It shows four allowed time slots {t<sub>1</sub>,t<sub>2</sub>,t<sub>3</sub>,t<sub>4</sub>} for block production. The solid line marks the verified blocks produced on time while the dashed line is the missing blocks. For each time slot, the system can compute the index of the responsible masternode using the above equation. The system sets the status of any masternode that fails to produce a block as “inactive” and the status of the current block’s producer as “active”. In this example, after the system verifies B(n,t<sub>4</sub>), it updates the masternode status associated with B(n,t<sub>4</sub>) as:
@@ -73,4 +73,4 @@ This attack sets the requirement to not only on the number controlled in an atta
 A long-range attack is one of most common ways to attack a Blockchain system. This attack exists when the attacker takes an old block, creates a new blockchain branch, and then tries to broadcast it to the network in an attempt to override the existing trunk. Very often, the fabricated branch is much longer than the trunk so as to fool the consensus protocol.
 
 Normally, the long-range attack cannot be used to attack the proposed PoA protocol. The below figure illustrates a long-range attack to PoA where the white blocks represent the trunk while the grey blocks the fabricated branch. On one hand, since there has to be a ∆-second interval between two consecutive blocks, it is impossible for the attacker to produce a much-longer chain. On the other hand, PoA chooses the trunk based on the accumulation of the number of “active” Authority Masternodes. In that sense, to replace the current trunk with the fabricated branch, the attack has to gather more than half of the available Authority Masternodes to produce a larger total number than the existing branch. The attack then becomes a 51% attack which has been described above.
-![Image of Attack](Attack.png)
+![Image of Attack](./Images/Attack.png)
