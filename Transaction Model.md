@@ -76,6 +76,8 @@ VeChainThor blockchain transaction consumes gas, gas is converted into VTHO base
 The calculation equation is:
 `VTHO = (1 + gasPriceCoef/255) * baseGasPrice`
 
-Current mainnet set baseGasPrice to be: 1 VTHO = 1000gas (always subject to the actual network parameter). The VET transfer fee is 21000gas. If gasPriceCoef = 0, the used `VTHO = (1 + 0/255) * 21000/1000 = 21 VTHO`
+The VET transfer fee is 21000gas. If gasPriceCoef = 0, the used `VTHO = (1 + 0/255) * 1e15 * 21000 / 1e18 = 21 VTHO`
 
-- The priority of a transaction in transaction pool can be raised by adjusting gasPriceCoef. For example, if gasPriceCoef =128, `used VTHO = (1 + 128/255) * 21000/1000 = 31.5 VTHO`
+> Always subject to the actual network parameter
+
+- The priority of a transaction in transaction pool can be raised by adjusting gasPriceCoef. For example, if gasPriceCoef =128, used `VTHO = (1 + 128/255) * 1e15 * 21000 / 1e18 = 31.5 VTHO`
