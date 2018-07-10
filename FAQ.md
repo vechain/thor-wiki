@@ -28,5 +28,19 @@ When you send tokens, interact with a contract, send `VET`/`VTHO`, or do anythin
 
 •In order to make it more user friendly to differentiate the VeChainThor address and Ethereum address, the display of the VeChainThor address will be customized in the UI by replace the first characters `0X` with `VX`. 
 
-### Thorify
-Thorify is a  web3 adaptor for VeChain Thor RESTful HTTP API. for more details please visit https://github.com/vechain/thorify.
+ ## Transaction fee calculation
+
+The calculation equation is:
+`VTHO = (1 + gasPriceCoef/255) * baseGasPrice`
+
+The VET transfer fee is 21000gas. If gasPriceCoef = 0, the used of `VTHO = (1 + 0/255) * 1e15 * 21000 / 1e18 = 21 VTHO`
+
+The priority of a transaction in transaction pool can be raised by adjusting gasPriceCoef. For example, if gasPriceCoef =128, used `VTHO = (1 + 128/255) * 1e15 * 21000 / 1e18 = 31.5 VTHO`
+
+>**Always subject to the actual network parameter**
+
+### Where can I find the contract address which I just deployed?
+Once contract successfully deployed, the contract address can be found in **transaction receipt**. 
+
+### Why I Cannot synchronize blocks?
+The reason for having an issue to synchronize with blocks is because the local time might be inaccurate. Please synchronized with NTP(Network Time Protocol) server . 

@@ -57,6 +57,7 @@ Block Number ∈[blockRef.number , BlockRef.number + expiration]
 
 
 ## Multi-task Transaction
+
 Another novel built-in feature is that the VeChainThor Blockchain allows a single transaction to carry out multiplegit tasks. To do that, we define the “Clause” structure that represents a certain on blockchain task. Each Clause contains three fields:
 
 - To – recipient’s address
@@ -69,15 +70,3 @@ The multi-task mechanism has two main characteristics:
 
 - Since the tasks are contained in a single transaction, their executions can be considered as an atomic operation, meaning that, they either all succeed, or all fail. 
 - During the transactions execution, the included tasks are processed one by one in the order defined by the fields Clauses
-
- ## Transaction fee calculation
-
-VeChainThor blockchain transaction consumes gas, gas is converted into VTHO based on gasPrice and account VTHO is deducted to calculate the transaction fee. 
-The calculation equation is:
-`VTHO = (1 + gasPriceCoef/255) * baseGasPrice`
-
-The VET transfer fee is 21000gas. If gasPriceCoef = 0, the used `VTHO = (1 + 0/255) * 1e15 * 21000 / 1e18 = 21 VTHO`
-
-> Always subject to the actual network parameter
-
-- The priority of a transaction in transaction pool can be raised by adjusting gasPriceCoef. For example, if gasPriceCoef =128, used `VTHO = (1 + 128/255) * 1e15 * 21000 / 1e18 = 31.5 VTHO`
