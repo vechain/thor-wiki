@@ -1,7 +1,7 @@
 # Proof-Of-Authority (PoA)
 
 ## Introduction to PoA (Poof-Of-Authority)
-Unlike PoW (Proof-Of-Work) and PoS (Proof-Of-Stake), replying on miners to mine the block, PoA strategy authorize the specific users to produce blocks with some certain rule. Compared to PoW and PoS, PoA does does not require to consume huge amount of physical energy to generate blocks. 
+Unlike PoW (Proof-Of-Work) and PoS (Proof-Of-Stake), relying on miners to mine the block, PoA strategy authorizes the specific users to produce blocks with some certain rule. Compared to PoW and PoS, PoA does not require to consume huge amount of physical energy to generate blocks. 
 
 ## VeChainThor Designed PoA Protocol In detail
 When designing the consensus protocol of any blockchain one must address three basic questions:
