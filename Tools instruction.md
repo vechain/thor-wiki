@@ -96,26 +96,26 @@ One transaction can include 0 or multiple clauses, users do not need to use cont
 | expiration | Number of blocks that can be used to specify when the transaction expires/invalid | Suggestion: 720 <br> Block Number ∈[blockRef.number , BlockRef.number + expiration]  |
 | to | Transaction receiver | - |
 | value | Amount of VET | - |
-| data | content in hex format | - |
+| data | Content in hex format | - |
 
 #### Contract Deployment
 Deploy the contract into VeChainThor network.
 
 |Fields | Description | Remarks |
 | --- | --- | --- |
-| contract deployer | contract deployer | select from account list|
-| contract data | the hex data of compiled contract | user needs to manually convert the contract to be hex format |
+| contract deployer | Contract deployer | select from account list|
+| contract data | The hex data of compiled contract | user needs to manually convert the contract to be hex format |
 | expiration | Number of blocks that can be used to specify when the transaction expires/invalid | Suggestion: 720 <br> Block Number ∈[blockRef.number , BlockRef.number + expiration]  |  
-| maximum gas | the amount of gas needs to be consumed|unit:Wei |
+| maximum gas | The amount of gas needs to be consumed|unit:Wei |
 
 #### Advanced parameter Setting
 **The fields below are all optional parameters**
 
 |Fields | Description | Remarks |
 | ------- | ------ | ------ |
-| gasPriceCoef | coefficient used to calculate the total gas price	 | `0` as default value，which ∈[0,255] |
+| gasPriceCoef | Coefficient used to calculate the total gas price	 | `0` as default value，which ∈[0,255] |
 | dependsOn  | ID of the transaction on which the current transaction depends | if dependsOn is NOT `null`, then only the transaction was successfully on chain will be executed.|
-| blockRef | reference to a specific block | `best block number` as default value |
+| blockRef | Reference to a specific block | `best block number` as default value |
 
 
 
@@ -186,7 +186,7 @@ By default, when accessing insights, insights automatically loads the latest blo
 | beneficiary  | An address of account to receive block reward |
 | txRoot | Root hash of transactions in the block |
 | stateRoot | Root hash of account state |
-| receiptsRoot |  R oot hash of transaction receipts |
+| receiptsRoot |  Root hash of transaction receipts |
 
 #### Transaction Query
 Because the Insights queries the info on chain, all the transactions have receipt. 
@@ -218,9 +218,9 @@ Because the Insights queries the info on chain, all the transactions have receip
 
 |Fields | Description |
 | --- | --- |
-| gas Payer | an address who paid the transaction |
-| paid (VTHO) | amount of VTHO cost |
-| tx Reward (VTHO) | transaction reward for proposer |
+| gas Payer | An address who paid the transaction |
+| paid (VTHO) | Amount of VTHO cost |
+| tx Reward (VTHO) | Transaction reward for proposer |
 | outputs | Event Logs |
 
 
@@ -229,10 +229,10 @@ Query the corresponding according to the address.
 
  Fields | Description |
 | --- | --- |
-| address | address of account|
-| available VET | available VET balance of address |
-| available VTHO | remaining VTHO |
-| transactions | the detailed information of a sent transaction |
+| address | Address of account|
+| available VET | Available VET balance of address |
+| available VTHO | Remaining VTHO |
+| transactions | The detailed information of a sent transaction |
 
 
 ### Approach 2: Java Client SDK
