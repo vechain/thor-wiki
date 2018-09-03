@@ -68,5 +68,5 @@ Intrinsic gas = txGas + clauses.type + dataGas
 ## How to calculate total transaction gas ?
 In VeChain Thor clauses allows a single transaction to carry out multiple tasks. Therefore, it needs to execute all the clauses cost in the transaction. 
 
-**Formula for total transaction gas**
+**Formula for total transaction gas**<br>
 ![totalTransactionGas](./Images/totalTransactionGas.svg)
