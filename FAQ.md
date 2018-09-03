@@ -3,8 +3,8 @@
 | Name| Web/Desktop | Official/Community | Link | 
 | --- | --- | --- | --- |
 | Sync | Desktop App | Official | https://github.com/vechain/thor-sync |
-| Vescan | Web | Community  | https://www.vescan.io/  |
-| Veforge | Web | Community  | https://explore.veforge.com/  |
+| Veforge | Web | Totient Labs  | https://explore.veforge.com/  |
+| TheVechain | Web | Community  | https://thevechain.com/ |
 
 ## Consensus
 VeChainThor adopts the PoA (Proof-of-Authority) consensus protocol, instead of neither PoW (Proof-of-Work) nor PoS (Proof-of-Stake). Members in the whitelist requiring KYC (know-your-customer) identity verification are in charge of and responsible for the operation of the blockchain network. Concerning the safety issue, we leverage DPRP protocol to mess up the order of packer who pack the block, making sure the sequence of order of packers varies each time when packing the block. 
@@ -52,3 +52,21 @@ The reason for having an issue to synchronize with blocks is because the local t
 The generation speed of VTHO is **0.000432** per VET per Day
 
 >The generation speed shown here is indicative only. the actual generation speed should subject to actual network
+
+## What is intrinsic gas ?
+The intrinsic gas for a transaction is the amount of the transaction used before any code runs. in other words, it's a constant "transaction fee" plus a fee for every byte of data supplied with the transaction.The gas in the transaction needs to be **greater than or equal** to the intrinsic gas used by the transaction. 
+
+```
+Intrinsic gas = txGas + clauses.type + dataGas
+```
+- txGas = 5,000
+-  Clauses type:
+    1. Normal transaction : 16,000
+    2. Contract creation : 48,000
+
+
+## How to calculate total transaction gas ?
+In VeChain Thor clauses allows a single transaction to carry out multiple tasks. Therefore, it needs to execute all the clauses cost in the transaction. 
+
+**Formula for total transaction gas**
+![totalTransactionGas](./Images/totalTransactionGas.svg)
