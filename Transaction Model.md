@@ -6,9 +6,9 @@ Blockchain transaction includes the following fields:
 - `chainTag` : `uint8`, **last byte** of the genesis block ID.
 - `blockRef`  : `uint64` Default is **best block**, The BlockRef(an eight-byte array) includes two parts: the first four bytes contains the block height (number) and the rest four bytes a part of the referred block’s ID.
 - `expiration` : `uint32` Default is **0** . Number of blocks that can be used to specify when the transaction expires[1].Specifically, Expiration+BlockRef[:4] defines the height of the latest block that the transaction can be packed into.
+- `origin(from)`  : `string` ,20bytes, The address that signs the transaction.
 - `clauses` : `array` an array of “clause” objects each of which contains fields “To”, “Value” and
 “Data” to enable single “from” coupling with multiple “to”
-- `from`  : `string` ,20bytes, The address for the sending account.
 - `to` (optional) : `string`,20bytes, The destination address of the message, left undefined for a contract-creation transaction. 
 - `value`(optional) :`string(hex)`,  The value transferred for the transaction in **Wei**, also the endowment if it’s a contract-creation transaction. 
 - `gasPriceCoef` :`uint8` , Default is **0**, gasPriceCoef required range of  **∈[0,255]** . [2]
