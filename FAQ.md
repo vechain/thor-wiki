@@ -2,7 +2,7 @@
 
 | Name| Web/Desktop | Official/Community | Link | 
 | --- | --- | --- | --- |
-| Sync | Desktop App | Official | https://github.com/vechain/thor-sync |
+| Sync | Desktop App | Official | https://github.com/vechain/thor-sync.electron |
 | Veforge | Web | Totient Labs  | https://explore.veforge.com/  |
 | TheVechain | Web | Community  | https://thevechain.com/ |
 
@@ -29,7 +29,6 @@ When you send tokens, interact with a contract, send `VET`/`VTHO`, or do anythin
 
 •Token swap ratio is 1:100. One ERC20 VeChain token will be split to 100 VETs on the VeChainThor Mainnet.
 
-•In order to make it more user friendly to differentiate the VeChainThor address and Ethereum address, the display of the VeChainThor address will be customized in the UI by replace the first characters `0X` with `VX`. 
 
 ## Transaction fee calculation
 
