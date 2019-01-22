@@ -3,8 +3,8 @@
 ## ToolKit
 1. [Java Client SDK](https://github.com/vechain/thor-client-sdk4j)
  > Documentation Directory : `file:///（projectPath）/doc/index.html`
-2. [Sync](https://github.com/vechain/thor-Sync)
- > [GitHub Documentation](https://github.com/vechain/thor-sync/wiki/Sync-manual)
+2. [Sync](https://github.com/vechain/thor-sync.electron)
+ > [GitHub Documentation](https://github.com/vechain/thor-sync.electron/wiki)
 
 ## Private Key Management
 ### Approach 1: Ethereum Account Management
