@@ -12,11 +12,11 @@ Let us first define the terminology to be used to describe MPP as follows:
 * *User* - VeChainTor allows any account to register other accounts as its users and conditionally pay for the cost of the transactions sent them;
 * *Credit* - available VHTO for paying for transaction cost for a particular user of a particular account. 
 
-![](https://github.com/vechain/thor-wiki/blob/master/Images/MPP_text.png)
+![mpp](https://github.com/vechain/thor-wiki/blob/master/Images/MPP_text.png)
 
 The above figure shows the decision-making flow within MPP. When it comes to the question of who should pay for a transaction, VeChainThor first checks the usership and sponsorship associated with the *Sender* and *Recipient*. It then tries to deduct the transaction fee from the corresponding account. For instance, if both the usership and sponsorship are in place, the system will first try to deduct the transaction fee from the *Sponsor*’s balance; if it fails, then from the *Recipient*'s balance; and if it fails again, from the *Sender*’s balance. 
 
-In practice, a dapp is most likely built upon multiple smart contracts deployed on VeChainThor. Its users interact with our public blockchain through sending transactions to the smart contracts to call a certain function. With MPP, the dapp owner can register its users' accounts as the *User* of the smart contracts such that all the legit transactions from the dapp users can be paid by the owner. In this way, people can use the dapp almost in the same way they use other apps without dealing with crypto. Moreover, the owner can set up a single account to sponsor all the smart contract, which makes the maintenance a lot easier. 
+In practice, a DApp is most likely built upon multiple smart contracts deployed on VeChainThor. Its users interact with our public blockchain through sending transactions to the smart contracts to call a certain function. With MPP, the DApp owner can register its users' accounts as the *User* of the smart contracts such that all the legit transactions from the DApp users can be paid by the owner. In this way, people can use the DApp almost in the same way they use other apps without dealing with crypto. Moreover, the owner can set up a single account to sponsor all the smart contract, which makes the maintenance a lot easier. 
 
 ### Credit Plan
 
@@ -29,13 +29,13 @@ type creditPlan struct {
 }
 ```
 
-where `RecoveryRate` is the amount of VTHO (in wei) accumulated per block to pay for transactions for each user and `Credit` the maximum amount of VTHO (in wei) that can be accumulated.
+where `RecoveryRate` is the amount of VTHO (in wei) accumulated per block to pay for transactions for each user and `Credit` the maximum amount of VTHO (in Wei) that can be accumulated.
 
-When the system checks whether an account's user has a sufficient amount of credit to pay for the transaction, it calculates the available credit $c$ as:
+When the system checks whether an account's user has a sufficient amount of credit to pay for the transaction, it calculates the available credit <img src="https://latex.codecogs.com/svg.latex?%5Cinline%20%5Clarge%20c" height = "14px" align=center /> as:
 
-$c = \min{\big(C,C-c_{\textrm{used}}+r\cdot\max{(0, h-h_0)}\big)}$
+![image-10](https://latex.codecogs.com/svg.latex?c%20%3D%20%5Cmin%7B%5Cbig%28C%2CC-c_%7B%5Ctextrm%7Bused%7D%7D&plus;r%5Ccdot%5Cmax%7B%280%2C%20h-h_0%29%7D%5Cbig%29%7D)
 
-where $C$ denotes `Credit`, $r$ `RecoverRate`, $h$ the current block height, $h_0$ the block height when the user uses credit last time and $u_{\textrm{used}}$ the amount of credit consumed after the user's last transaction is paid by the account. Note that $C-c_{\textrm{used}}$ is the remaining credit  after the last transaction is paid.
+where <img src="https://latex.codecogs.com/svg.latex?%5Cinline%20%5Clarge%20C" height = "14px" align=center /> denotes `Credit`, <img src="https://latex.codecogs.com/svg.latex?%5Cinline%20%5Clarge%20r" height = "14px" align=center /> `RecoverRate`, <img src="https://latex.codecogs.com/svg.latex?%5Cinline%20%5Clarge%20h" height = "14px" align=center /> the current block height, <img src="https://latex.codecogs.com/svg.latex?%5Cinline%20%5Clarge%20h_0" height = "14px" align=center /> the block height when the user uses credit last time and <img src="https://latex.codecogs.com/svg.latex?u_%7B%5Ctextrm%7Bused%7D%7D" height = "14px" align=center /> the amount of credit consumed after the user's last transaction is paid by the account. Note that <img src="https://latex.codecogs.com/svg.latex?C-c_%7B%5Ctextrm%7Bused%7D%7D" height = "14px" align=center /> is the remaining credit  after the last transaction is paid.
 
 ### Master Account
 
