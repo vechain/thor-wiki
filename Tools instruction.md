@@ -84,7 +84,7 @@ The single transaction is like Ethereum, sent from one sender to another receive
 | from | The transaction sender address |-  |
 | to  | The transaction receiver address |-  |
 | value | Amount transferred to the receiver| Unit :VET |
-| expiration | Number of blocks that can be used to specify when the transaction expires/invalid |Suggestion: 720 <br> Block Number ∈[blockRef.number , BlockRef.number + expiration] |
+| expiration | Number of blocks that can be used to specify when the transaction expires/invalid |Suggestion: 18 <br> Block Number ∈[blockRef.number , BlockRef.number + expiration] |
 | maximum gas |Amount gas allowed to be used |- |
 
 #### Multi-Transaction 
@@ -93,7 +93,7 @@ One transaction can include 0 or multiple clauses, users do not need to use cont
 | Fields | Description | Remarks |
 | --- | --- | --- |
 | from | Transaction sender address | - |
-| expiration | Number of blocks that can be used to specify when the transaction expires/invalid | Suggestion: 720 <br> Block Number ∈[blockRef.number , BlockRef.number + expiration]  |
+| expiration | Number of blocks that can be used to specify when the transaction expires/invalid | Suggestion: 18 <br> Block Number ∈[blockRef.number , BlockRef.number + expiration]  |
 | to | Transaction receiver | - |
 | value | Amount of VET | - |
 | data | Content in hex format | - |
@@ -105,7 +105,7 @@ Deploy the contract into VeChainThor network.
 | --- | --- | --- |
 | contract deployer | Contract deployer | select from account list|
 | contract data | The hex data of compiled contract | user needs to manually convert the contract to be hex format |
-| expiration | Number of blocks that can be used to specify when the transaction expires/invalid | Suggestion: 720 <br> Block Number ∈[blockRef.number , BlockRef.number + expiration]  |  
+| expiration | Number of blocks that can be used to specify when the transaction expires/invalid | Suggestion: 18 <br> Block Number ∈[blockRef.number , BlockRef.number + expiration]  |  
 | maximum gas | The amount of gas needs to be consumed|unit:Wei |
 
 #### Advanced parameter Setting
