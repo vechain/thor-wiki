@@ -4,7 +4,6 @@
 | --- | --- | --- | --- |
 | Sync | Desktop App | Official | https://github.com/vechain/thor-sync.electron |
 | Veforge | Web | Totient Labs  | https://explore.veforge.com/  |
-| TheVechain | Web | Community  | https://thevechain.com/ |
 
 ## Consensus
 VeChainThor adopts the PoA (Proof-of-Authority) consensus protocol, instead of neither PoW (Proof-of-Work) nor PoS (Proof-of-Stake). Members in the whitelist requiring KYC (know-your-customer) identity verification are in charge of and responsible for the operation of the blockchain network. Concerning the safety issue, we leverage DPRP protocol to mess up the order of packer who pack the block, making sure the sequence of order of packers varies each time when packing the block. 
