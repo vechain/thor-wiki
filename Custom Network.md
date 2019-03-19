@@ -1,77 +1,48 @@
 # Build Your Custom Network
 
-Maintaining your own custom network needs more configurations than the  official networks.You need to follow the steps below:
+To start your own custom network, you need to manually configure the genesis file. Once you finished the setup, it allows you to connect to your own network rather than connect to official network(mainnet/testnet)
 
-First you need more than one node running as master node and master address of the nodes need to be generated before setting up the network. Running `thor master-key` will display the master address for you. Then you need to craft your own genesis description file that consist of a JSON object. Check below for the example:
+### Requirement：
 
-``` JSON
-{
-    "launchTime": 1530316800,
-    "gasLimit": 10000000,
-    "extraData": "My custom VeChain",
-    "accounts": [
-        {
-            "address": "0x7567d83b7b8d80addcb281a71d54fc7b3364ffed",
-            "balance": 25000000000000000000000000,
-            "energy": 0,
-            "code": "0x6060604052600256",
-            "storage": {
-                "0x0000000000000000000000000000000000000000000000000000000000000001": "0x0000000000000000000000000000000000000000000000000000000000000002"
-            }
-        },
-        {
-            "address": "0x137053dfbe6c0a43f915ad2efefefdcc2708e975",
-            "balance": 21046908616500000000000000000,
-            "energy": 0
-        },
-        {
-            "address": "0xaf111431c1284a5e16d2eecd2daed133ce96820e",
-            "balance": 21046908616500000000000000000,
-            "energy": 0
-        },
-        {
-            "address": "0x997522a4274336f4b86af4a6ed9e45aedcc6d360",
-            "balance": 21046908616500000000000000000,
-            "energy": 0
-        },
-        {
-            "address": "0x0bd7b06debd1522e75e4b91ff598f107fd826c8a",
-            "balance": 21046908616500000000000000000,
-            "energy": 0
-        }
-    ],
-    "authority": [
-        {
-            "masterAddress": "0xd3ae78222beadb038203be21ed5ce7c9b1bff602",
-            "endorsorAddress": "0x7567d83b7b8d80addcb281a71d54fc7b3364ffed",
-            "identity": "0x000000000000000068747470733a2f2f636f6e6e65782e76656368612e696e2f"
-        },
-        {
-            "masterAddress": "0x733b7269443c70de16bbf9b0615307884bcc5636",
-            "endorsorAddress": "0x7567d83b7b8d80addcb281a71d54fc7b3364ffed",
-            "identity": "0x000000000000000068747470733a2f2f656e762e7665636861696e2e6f72672f"
-        },
-        {
-            "masterAddress": "0x115eabb4f62973d0dba138ab7df5c0375ec87256",
-            "endorsorAddress": "0x7567d83b7b8d80addcb281a71d54fc7b3364ffed",
-            "identity": "0x0000000000000068747470733a2f2f617070732e7665636861696e2e6f72672f"
-        }
-    ],
-    "params": {
-        "rewardRatio": 300000000000000000,
-        "baseGasPrice": 1000000000000000,
-        "proposerEndorsement": 25000000000000000000000000,
-        "executorAddress": "0x0000000000000000000000004578656375746f72"
-    },
-    "executor": {
-        "approvers": [
-            {
-                "address": "0x199b836d8a57365baccd4f371c1fabb7be77d389",
-                "identity": "0x00000000000067656e6572616c20707572706f736520626c6f636b636861696e"
-            }
-        ]
-    }
-}
-```
+1. Make sure the network has at least **two** nodes running as a authority master node
+2. Thor version ≥ [v1.0.7](https://github.com/vechain/thor/releases/tag/v1.0.7)
+
+### Before You Start
+
+Build your custom network requires understanding the mechanism of blockchain. Make sure you go through [thor wiki](https://github.com/vechain/thor/wiki) especially the article about [Builtin Contract](https://github.com/vechain/thor/wiki/Builtin-Contract) and [Proof of Authority](https://github.com/vechain/thor/wiki/Proof-of-Authority). This will help you understanding the next steps.
+
+
+## Configure Your Genesis File
+
+You can find an example genesis file [by this link](https://github.com/vechain/thor/blob/master/genesis/example.json)
+
+### Genesis Description Object
+
++ `launchTime`: Launch time(unix timestamp) of your network(aka the time of genesis block). If you set the time in the future, master node would not propose block before that.
++ `gasLimit`: Initial block gas limit
++ `extraData`: Additional data set to genesis block, limited to 28 characters.
++ `accounts`: Preallocated accounts in genesis block, including `balance`, `energy`, `storage` and `code`.
++ `authority`: Authority master nodes.
++ `params`: Governance parameters.
++ `executor`: Executor params for on-chain governance, setting approvers means using vechain builtin executor, omit means an external address.
+
+#### Authority
+
+For setting authority node, you need get your authority node's master address, simply running the following command
+
+``` bash
+thor master-key
+``` 
+
+The master address show. `Endorsor Address` is the endorser's address for authority node, make sure alloc sufficient VET for the address. `Identity` is for identify the  authority node.
+
+#### Params
+
+- `rewardRatio`: Reward ratio for block proposer.
+- `baseGasPrice`: Base gas price in `wei`.
+- `proposerEndorsement`: Authority node endorsement in `wei`.
+- `executorAddress`: Executor address, if there is approver in `executor`, the address will be set code of `Builtin Executor Contract` and set up the approves, otherwise the executor will be an external address.
+
+## Launch Custom Network 
 
 Start all your nodes by running `thor --network genesis.json`, waiting for the nodes connects to each other and the master nodes will start packing the blocks.
