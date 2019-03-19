@@ -18,7 +18,7 @@ You can find an example genesis file [by this link](https://github.com/vechain/t
 
 ### Genesis Description Object
 
-+ `launchTime`: Launch time(unix timestamp) of your network(aka the time of genesis block). If you set the time in the future, master node would not propose block before that.
++ `launchTime`: Launch time(unix timestamp) of your network(I.e. the time of genesis block). If you set the time in the future, master node would not propose block before that.
 + `gasLimit`: Initial block gas limit
 + `extraData`: Additional data set to genesis block, limited to 28 characters.
 + `accounts`: Preallocated accounts in genesis block, including `balance`, `energy`, `storage` and `code`.
@@ -28,13 +28,13 @@ You can find an example genesis file [by this link](https://github.com/vechain/t
 
 #### Authority
 
-For setting authority node, you need get your authority node's master address, simply running the following command
+For setting the authority node, you need to get your authority node's master address first, simply running the following command
 
 ``` bash
 thor master-key
 ``` 
 
-The master address show. `Endorsor Address` is the endorser's address for authority node, make sure alloc sufficient VET for the address. `Identity` is for identify the  authority node.
+The master address will be shown. `Endorsor Address` is the endorser's address for authority node, you need to ensure the `Endorsor Address`  reach the minimum amount of `proposerEndorsement`. You can adjust the minimum endorsement amount of VET by changing `proposerEndorsement”`. `Identity` is an identifier of the authority node.
 
 #### Params
 
