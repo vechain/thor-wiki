@@ -46,3 +46,11 @@ The master address will be shown. `Endorsor Address` is the endorser's address f
 ## Launch Custom Network 
 
 Start all your nodes by running `thor --network genesis.json`, waiting for the nodes connects to each other and the master nodes will start packing the blocks.
+
+## Custom Bootnode
+
+Start a custom network will use the foundation's bootnode to discover nodes by default. This means you need at least 1 node with public IP attached. Thor provides the ability to specify bootnode.
+
+1. Start thor by `thor --network genesis.json` then get `Node ID` in the startup info, it looks like `enode://0b9f...6932@[extip]:11235`.
+2. Replace `[extip]` with the real ip address of your machine.
+3. Launch nodes by running `thor --network genesis.json --bootnode "NodeID-1,NodeID-2..."`.
